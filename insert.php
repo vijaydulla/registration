@@ -9,9 +9,12 @@ if(isset($_POST['submit']))
     $name = $_POST['name'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $address = $_POST['address'];
 
-    $sql = "INSERT INTO students(name,email,mobile)
-            VALUES('$name','$email','$mobile')";
+    $sql = "INSERT INTO students(name,email,mobile,age,gender,address)
+            VALUES('$name','$email','$mobile','$age','$gender','$address')";
 
     if(mysqli_query($conn,$sql))
     {
