@@ -7,11 +7,17 @@ if(isset($_POST['update']))
     $name = $_POST['name'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $address = $_POST['address'];
 
     $sql = "UPDATE students SET 
             name='$name',
             email='$email',
-            mobile='$mobile'
+            mobile='$mobile',
+            age='$age',
+            gender='$gender',
+            address='$address'
             WHERE id='$id'";
 
     if(mysqli_query($conn, $sql))
