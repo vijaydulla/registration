@@ -17,12 +17,12 @@ if(isset($_POST['submit']))
             VALUES('$name','$email','$mobile','$age','$gender','$address')";
 
     if(mysqli_query($conn,$sql))
-    {
-        echo "<script>
-        alert('Record Inserted Successfully');
-        window.location='view.php';
-        </script>";
-    }
+{
+    echo "<script>
+    alert('Registration Successful');
+    window.location='insert.php';
+    </script>";
+}
     else
     {
         echo "Insert Error: " . mysqli_error($conn);
