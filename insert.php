@@ -13,23 +13,36 @@ if(isset($_POST['submit']))
     $gender = $_POST['gender'];
     $address = $_POST['address'];
 
+    // Check if email already exists
+    $check = "SELECT * FROM students WHERE email='$email'";
+    $result = mysqli_query($conn, $check);
+
+    if(mysqli_num_rows($result) > 0)
+    {
+        echo "<script>
+                alert('Email already exists!');
+                window.location='insert.php';
+              </script>";
+        exit();
+    }
+
+    // Insert new record
     $sql = "INSERT INTO students(name,email,mobile,age,gender,address)
             VALUES('$name','$email','$mobile','$age','$gender','$address')";
 
     if(mysqli_query($conn,$sql))
-{
-    echo "<script>
-    alert('Registration Successful');
-    window.location='insert.php';
-    </script>";
-}
+    {
+        echo "<script>
+                alert('Registration Successful');
+                window.location='insert.php';
+              </script>";
+    }
     else
     {
         echo "Insert Error: " . mysqli_error($conn);
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
