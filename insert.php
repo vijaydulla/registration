@@ -14,13 +14,26 @@ if(isset($_POST['submit']))
     $address = $_POST['address'];
 
     // Check if email already exists
-    $check = "SELECT * FROM students WHERE email='$email'";
-    $result = mysqli_query($conn, $check);
+    $checkEmail = "SELECT * FROM students WHERE email='$email'";
+    $resultEmail = mysqli_query($conn, $checkEmail);
 
-    if(mysqli_num_rows($result) > 0)
+    if(mysqli_num_rows($resultEmail) > 0)
     {
         echo "<script>
                 alert('Email already exists!');
+                window.location='insert.php';
+              </script>";
+        exit();
+    }
+
+    // Check if mobile number already exists
+    $checkMobile = "SELECT * FROM students WHERE mobile='$mobile'";
+    $resultMobile = mysqli_query($conn, $checkMobile);
+
+    if(mysqli_num_rows($resultMobile) > 0)
+    {
+        echo "<script>
+                alert('Mobile number already exists!');
                 window.location='insert.php';
               </script>";
         exit();
